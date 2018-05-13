@@ -269,7 +269,7 @@
 
     function cbPush(resp) {
         console.log("response of respone: " + JSON.stringify(resp));
-        if (resp.result == 'null' || typeof(resp.result) == "undefined" || resp.result == '') {
+        if (resp.result == 'null' || resp.result == '' || typeof(resp.result) == "undefined" || resp.result == '') {
             var hm = '<li class="list-group-item list-group-item-success">';
             hm += '您还未提交过遗言!<br>请点击右上方的立，提交遗言!';
             hm += '</li>';
