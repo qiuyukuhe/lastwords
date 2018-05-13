@@ -269,8 +269,19 @@
 
     function cbPush(resp) {
         console.log("response of respone: " + JSON.stringify(resp));
+        if (typeof(resp.result) == "undefined" || resp.result == '') {
+            var hm = '<li class="list-group-item list-group-item-success">';
+            hm += '您还未提交过遗言!';
+            hm += '</li>';
+            $("#content-list").append(hm);
+            return;
+        }
         var result = eval(JSON.parse(resp.result));
         var colorsGroup = ['list-group-item-success', 'list-group-item-info', 'list-group-item-warning', 'list-group-item-danger']
+
+        if (result.size == 0) {
+
+        }
         for (var i = 0; i < result.length; i++) {
             var hm = '<li class="list-group-item ' + colorsGroup[i % 4] + '">';
             hm += '姓  &nbsp;   &nbsp;名:   &nbsp;' + result[i]['username'] + '<br>';
