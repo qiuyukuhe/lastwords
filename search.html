@@ -223,7 +223,7 @@
 <script>
 
     "use strict";
-    var dappAddress = "n1nNyuHwchDFL1sqXcHdXordZCUta814BWk";
+    var dappAddress = "n1z3nX2oM7yKffz6opsJf9Rd8WSGXz416cU";
 
     var nebulas = require("nebulas"),
         Account = nebulas.Account,
@@ -269,9 +269,9 @@
 
     function cbPush(resp) {
         console.log("response of respone: " + JSON.stringify(resp));
-        if (typeof(resp.result) == "undefined" || resp.result == '') {
+        if (resp.result == 'null' || typeof(resp.result) == "undefined" || resp.result == '') {
             var hm = '<li class="list-group-item list-group-item-success">';
-            hm += '您还未提交过遗言!';
+            hm += '您还未提交过遗言!<br>请点击右上方的立，提交遗言!';
             hm += '</li>';
             $("#content-list").append(hm);
             return;
@@ -279,9 +279,6 @@
         var result = eval(JSON.parse(resp.result));
         var colorsGroup = ['list-group-item-success', 'list-group-item-info', 'list-group-item-warning', 'list-group-item-danger']
 
-        if (result.size == 0) {
-
-        }
         for (var i = 0; i < result.length; i++) {
             var hm = '<li class="list-group-item ' + colorsGroup[i % 4] + '">';
             hm += '姓  &nbsp;   &nbsp;名:   &nbsp;' + result[i]['username'] + '<br>';
